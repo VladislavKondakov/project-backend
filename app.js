@@ -2,6 +2,9 @@ import express from "express"
 import logger from "morgan"
 import cors from "cors"
 
+import authRouter from "./routes/api/auth-router.js"
+import movieRouter from "./routes/api/movie-router.js"
+
 
 const app = express()
 
@@ -11,6 +14,9 @@ app.use(logger(formatsLogger))
 app.use(cors())
 app.use(express.json())
 app.use(express.static("public"))
+
+app.use("/api/movies",movieRouter)
+app.use("/api/auth", authRouter)
 
 
 
